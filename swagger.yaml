@@ -1,0 +1,48 @@
+openapi: 3.0.0
+info:
+  title: Node.js Clean Architecture API (2026)
+  version: 1.0.0
+  description: A professional Node.js API with Clean Architecture, Express, and TypeScript.
+servers:
+  - url: http://localhost:3000/api/v1
+paths:
+  /health:
+    get:
+      summary: Check API health status
+      tags:
+        - System
+      responses:
+        '200':
+          description: API is healthy
+  /users/register:
+    post:
+      summary: Register a new user
+      tags:
+        - Users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - email
+                - password
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+                  minLength: 8
+                firstName:
+                  type: string
+                lastName:
+                  type: string
+      responses:
+        '201':
+          description: User created successfully
+        '400':
+          description: Invalid input
+        '409':
+          description: User already exists
