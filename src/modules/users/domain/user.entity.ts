@@ -1,27 +1,41 @@
 export interface UserProps {
-  id?: string;
-  email: string;
-  password: string;
-  firstName?: string | null;
-  lastName?: string | null;
-  createdAt?: Date;
-  updatedAt?: Date;
+  id?: string
+  email: string
+  password: string
+  firstName?: string | null
+  lastName?: string | null
+  createdAt?: Date
+  updatedAt?: Date
 }
 
 export class User {
-  private props: UserProps;
+  private props: UserProps
 
   constructor(props: UserProps) {
-    this.props = props;
+    this.props = props
   }
 
-  get id() { return this.props.id; }
-  get email() { return this.props.email; }
-  get password() { return this.props.password; }
-  get firstName() { return this.props.firstName; }
-  get lastName() { return this.props.lastName; }
-  get createdAt() { return this.props.createdAt; }
-  get updatedAt() { return this.props.updatedAt; }
+  get id() {
+    return this.props.id
+  }
+  get email() {
+    return this.props.email
+  }
+  get password() {
+    return this.props.password
+  }
+  get firstName() {
+    return this.props.firstName
+  }
+  get lastName() {
+    return this.props.lastName
+  }
+  get createdAt() {
+    return this.props.createdAt
+  }
+  get updatedAt() {
+    return this.props.updatedAt
+  }
 
   public toJSON() {
     return {
@@ -31,6 +45,6 @@ export class User {
       lastName: this.lastName,
       createdAt: this.createdAt,
       updatedAt: this.updatedAt,
-    };
+    }
   }
 }
