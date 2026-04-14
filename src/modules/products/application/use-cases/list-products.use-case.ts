@@ -4,9 +4,9 @@ import { Product } from '@/modules/products/domain/product.entity'
 export class ListProductsUseCase {
   constructor(private productRepository: ProductRepository) {}
 
-  async execute(categoryId?: string): Promise<Product[]> {
-    if (categoryId) {
-      return await this.productRepository.findByCategory(categoryId)
+  async execute(productIds?: string[]): Promise<Product[]> {
+    if (productIds && productIds.length > 0) {
+      return await this.productRepository.findByIds(productIds)
     }
     return await this.productRepository.findAll()
   }

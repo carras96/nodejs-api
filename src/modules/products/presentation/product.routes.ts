@@ -26,8 +26,8 @@ const productController = new ProductController(
 
 router.get('/', productController.list)
 router.get('/:id', productController.getById)
-router.post('/', productController.create)
-router.put('/:id', productController.update)
-router.delete('/:id', productController.delete)
+router.post('/create', productController.create)
+router.put('/:id/update', productController.update)
+router.delete('/:id/delete', productController.delete)
 
 export { router as productRoutes }

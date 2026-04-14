@@ -25,7 +25,8 @@ model Category {
   name        String
   description String?
   image       String?
-  products    Product[]
+  productIds  String[]  @db.ObjectId
+  products    Product[] @relation(fields: [productIds], references: [id])
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
 
@@ -33,7 +34,7 @@ model Category {
 }
 
 model Product {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  id          String     @id @default(auto()) @map("_id") @db.ObjectId
   name        String
   tag         String?
   price       Float
@@ -41,10 +42,10 @@ model Product {
   description String?
   benefits    Benefit[]
   features    String[]
-  category    Category @relation(fields: [categoryId], references: [id])
-  categoryId  String   @db.ObjectId
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  categoryIds String[]   @db.ObjectId
+  categories  Category[] @relation(fields: [categoryIds], references: [id])
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
 
   @@map("products")
 }

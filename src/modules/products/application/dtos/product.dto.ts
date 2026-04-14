@@ -14,7 +14,7 @@ export const createProductSchema = z.object({
   description: z.string().optional(),
   benefits: z.array(benefitSchema).optional(),
   features: z.array(z.string()).optional(),
-  categoryId: z.string().min(1), // ObjectId string
+  categoryIds: z.array(z.string()).optional(), // Array of ObjectId strings
 })
 
 export const updateProductSchema = createProductSchema.partial()

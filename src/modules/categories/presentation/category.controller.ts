@@ -4,6 +4,8 @@ import { ListCategoriesUseCase } from '@/modules/categories/application/use-case
 import { GetCategoryUseCase } from '@/modules/categories/application/use-cases/get-category.use-case'
 import { UpdateCategoryUseCase } from '@/modules/categories/application/use-cases/update-category.use-case'
 import { DeleteCategoryUseCase } from '@/modules/categories/application/use-cases/delete-category.use-case'
+import { AddProductsToCategoryUseCase } from '@/modules/categories/application/use-cases/add-products-to-category.use-case'
+import { RemoveProductsFromCategoryUseCase } from '@/modules/categories/application/use-cases/remove-products-from-category.use-case'
 import {
   createCategorySchema,
   updateCategorySchema,
@@ -16,6 +18,8 @@ export class CategoryController {
     private getCategoryUseCase: GetCategoryUseCase,
     private updateCategoryUseCase: UpdateCategoryUseCase,
     private deleteCategoryUseCase: DeleteCategoryUseCase,
+    private addProductsToCategoryUseCase: AddProductsToCategoryUseCase,
+    private removeProductsFromCategoryUseCase: RemoveProductsFromCategoryUseCase,
   ) {}
 
   create = async (req: Request, res: Response, next: NextFunction) => {
@@ -60,6 +64,28 @@ export class CategoryController {
     try {
       await this.deleteCategoryUseCase.execute(req.params.id as string)
       res.json({ success: true, message: 'Category deleted successfully' })
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  addProducts = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const { categoryId } = req.params
+      const { productIds } = req.body
+      await this.addProductsToCategoryUseCase.execute(categoryId as string, productIds)
+      res.json({ success: true, message: 'Products added to category successfully' })
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  removeProducts = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const { categoryId } = req.params
+      const { productIds } = req.body
+      await this.removeProductsFromCategoryUseCase.execute(categoryId as string, productIds)
+      res.json({ success: true, message: 'Products removed from category successfully' })
     } catch (error) {
       next(error)
     }

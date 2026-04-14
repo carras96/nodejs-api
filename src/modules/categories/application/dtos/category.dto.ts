@@ -5,6 +5,7 @@ export const createCategorySchema = z.object({
   name: z.string().min(1),
   description: z.string().optional(),
   image: z.string().optional(),
+  productIds: z.array(z.string()).optional(),
 })
 
 export const updateCategorySchema = createCategorySchema.partial()

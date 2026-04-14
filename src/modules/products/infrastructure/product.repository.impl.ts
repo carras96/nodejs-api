@@ -1,12 +1,12 @@
 import { Product as PrismaProduct } from '@prisma/client'
 import { prisma } from '@/infrastructure/database/connection'
-import { Product } from '@/modules/products/domain/product.entity'
+import { Product, Benefit } from '@/modules/products/domain/product.entity'
 import { ProductRepository } from '@/modules/products/domain/product.repository'
 
 export class PrismaProductRepository implements ProductRepository {
   async findAll(): Promise<Product[]> {
     const products = await prisma.product.findMany({
-      include: { category: true },
+      include: { categories: true },
     })
     return products.map((p) => this.toDomain(p))
   }
@@ -14,15 +14,27 @@ export class PrismaProductRepository implements ProductRepository {
   async findById(id: string): Promise<Product | null> {
     const product = await prisma.product.findUnique({
       where: { id },
-      include: { category: true },
+      include: { categories: true },
     })
     return product ? this.toDomain(product) : null
   }
 
+  async findByIds(ids: string[]): Promise<Product[]> {
+    const products = await prisma.product.findMany({
+      where: {
+        id: { in: ids },
+      },
+      include: { categories: true },
+    })
+    return products.map((p) => this.toDomain(p))
+  }
+
   async findByCategory(categoryId: string): Promise<Product[]> {
     const products = await prisma.product.findMany({
-      where: { categoryId },
-      include: { category: true },
+      where: {
+        categoryIds: { has: categoryId },
+      },
+      include: { categories: true },
     })
     return products.map((p) => this.toDomain(p))
   }
@@ -37,9 +49,9 @@ export class PrismaProductRepository implements ProductRepository {
         description: product.description,
         benefits: product.benefits,
         features: product.features,
-        categoryId: product.categoryId,
+        categoryIds: product.categoryIds,
       },
-      include: { category: true },
+      include: { categories: true },
     })
     return this.toDomain(created)
   }
@@ -50,14 +62,30 @@ export class PrismaProductRepository implements ProductRepository {
       data: {
         ...product,
         benefits: product.benefits,
+        categoryIds: product.categoryIds,
       },
-      include: { category: true },
+      include: { categories: true },
     })
     return this.toDomain(updated)
   }
 
   async delete(id: string): Promise<void> {
     await prisma.product.delete({ where: { id } })
+  }
+
+  async updateCategoryBulk(
+    productIds: string[],
+    categoryId: string,
+    action: 'connect' | 'disconnect',
+  ): Promise<void> {
+    await prisma.category.update({
+      where: { id: categoryId },
+      data: {
+        products: {
+          [action]: productIds.map((id) => ({ id })),
+        },
+      },
+    })
   }
 
   private toDomain(raw: PrismaProduct): Product {
@@ -68,9 +96,9 @@ export class PrismaProductRepository implements ProductRepository {
       price: raw.price,
       image: raw.image ?? undefined,
       description: raw.description ?? undefined,
-      benefits: raw.benefits,
+      benefits: raw.benefits as unknown as Benefit[],
       features: raw.features,
-      categoryId: raw.categoryId,
+      categoryIds: raw.categoryIds,
       createdAt: raw.createdAt,
       updatedAt: raw.updatedAt,
     })

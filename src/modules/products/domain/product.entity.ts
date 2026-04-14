@@ -13,7 +13,7 @@ export interface ProductProps {
   description?: string
   benefits?: Benefit[]
   features?: string[]
-  categoryId: string
+  categoryIds?: string[]
   createdAt?: Date
   updatedAt?: Date
 }
@@ -27,7 +27,7 @@ export class Product {
   description?: string
   benefits: Benefit[]
   features: string[]
-  categoryId: string
+  categoryIds: string[]
   createdAt?: Date
   updatedAt?: Date
 
@@ -40,7 +40,7 @@ export class Product {
     this.description = props.description
     this.benefits = props.benefits || []
     this.features = props.features || []
-    this.categoryId = props.categoryId
+    this.categoryIds = props.categoryIds || []
     this.createdAt = props.createdAt
     this.updatedAt = props.updatedAt
   }
@@ -55,7 +55,7 @@ export class Product {
       description: this.description,
       benefits: this.benefits,
       features: this.features,
-      categoryId: this.categoryId,
+      categoryIds: this.categoryIds,
       createdAt: this.createdAt,
       updatedAt: this.updatedAt,
     }

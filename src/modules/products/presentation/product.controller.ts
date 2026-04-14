@@ -30,8 +30,16 @@ export class ProductController {
 
   list = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const { categoryId } = req.query
-      const products = await this.listProductsUseCase.execute(categoryId as string)
+      const { productIds } = req.query
+      let ids: string[] | undefined
+
+      if (typeof productIds === 'string') {
+        ids = productIds.split(',').map((id) => id.trim())
+      } else if (Array.isArray(productIds)) {
+        ids = productIds as string[]
+      }
+
+      const products = await this.listProductsUseCase.execute(ids)
       res.json({ success: true, data: products.map((p) => p.toJSON()) })
     } catch (error) {
       next(error)

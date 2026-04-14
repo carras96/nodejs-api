@@ -4,6 +4,7 @@ export interface CategoryProps {
   name: string
   description?: string
   image?: string
+  productIds?: string[]
   createdAt?: Date
   updatedAt?: Date
 }
@@ -14,6 +15,7 @@ export class Category {
   name: string
   description?: string
   image?: string
+  productIds: string[]
   createdAt?: Date
   updatedAt?: Date
 
@@ -23,6 +25,7 @@ export class Category {
     this.name = props.name
     this.description = props.description
     this.image = props.image
+    this.productIds = props.productIds || []
     this.createdAt = props.createdAt
     this.updatedAt = props.updatedAt
   }
@@ -34,6 +37,7 @@ export class Category {
       name: this.name,
       description: this.description,
       image: this.image,
+      productIds: this.productIds,
       createdAt: this.createdAt,
       updatedAt: this.updatedAt,
     }

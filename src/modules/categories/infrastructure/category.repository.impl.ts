@@ -1,4 +1,4 @@
-import { Category as PrismaCategory } from '@prisma/client'
+import { Category as PrismaCategory, Prisma } from '@prisma/client'
 import { prisma } from '@/infrastructure/database/connection'
 import { Category } from '@/modules/categories/domain/category.entity'
 import { CategoryRepository } from '@/modules/categories/domain/category.repository'
@@ -26,6 +26,7 @@ export class PrismaCategoryRepository implements CategoryRepository {
         name: category.name,
         description: category.description,
         image: category.image,
+        productIds: category.productIds,
       },
     })
     return this.toDomain(created)
@@ -34,7 +35,13 @@ export class PrismaCategoryRepository implements CategoryRepository {
   async update(id: string, category: Partial<Category>): Promise<Category> {
     const updated = await prisma.category.update({
       where: { id },
-      data: category,
+      data: {
+        slug: category.slug,
+        name: category.name,
+        description: category.description,
+        image: category.image,
+        productIds: category.productIds,
+      } as Prisma.CategoryUpdateInput,
     })
     return this.toDomain(updated)
   }
@@ -50,6 +57,7 @@ export class PrismaCategoryRepository implements CategoryRepository {
       name: raw.name,
       description: raw.description || undefined,
       image: raw.image || undefined,
+      productIds: raw.productIds,
       createdAt: raw.createdAt,
       updatedAt: raw.updatedAt,
     })
