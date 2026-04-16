@@ -1,13 +1,14 @@
-import { Request, Response, NextFunction } from 'express'
-import { CreateProductUseCase } from '@/modules/products/application/use-cases/create-product.use-case'
-import { ListProductsUseCase } from '@/modules/products/application/use-cases/list-products.use-case'
-import { GetProductUseCase } from '@/modules/products/application/use-cases/get-product.use-case'
-import { UpdateProductUseCase } from '@/modules/products/application/use-cases/update-product.use-case'
-import { DeleteProductUseCase } from '@/modules/products/application/use-cases/delete-product.use-case'
+import { NextFunction,Request, Response } from 'express'
+
 import {
   createProductSchema,
   updateProductSchema,
 } from '@/modules/products/application/dtos/product.dto'
+import { CreateProductUseCase } from '@/modules/products/application/use-cases/create-product.use-case'
+import { DeleteProductUseCase } from '@/modules/products/application/use-cases/delete-product.use-case'
+import { GetProductUseCase } from '@/modules/products/application/use-cases/get-product.use-case'
+import { ListProductsUseCase } from '@/modules/products/application/use-cases/list-products.use-case'
+import { UpdateProductUseCase } from '@/modules/products/application/use-cases/update-product.use-case'
 
 export class ProductController {
   constructor(

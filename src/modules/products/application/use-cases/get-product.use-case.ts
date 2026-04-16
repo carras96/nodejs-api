@@ -1,6 +1,6 @@
+import { NotFoundError } from '@/core/exceptions'
 import { Product } from '@/modules/products/domain/product.entity'
 import { ProductRepository } from '@/modules/products/domain/product.repository'
-import { NotFoundError } from '@/core/exceptions'
 
 export class GetProductUseCase {
   constructor(private productRepository: ProductRepository) {}

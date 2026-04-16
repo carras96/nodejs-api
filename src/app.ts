@@ -1,17 +1,18 @@
-import express from 'express'
-import helmet from 'helmet'
 import cors from 'cors'
+import express from 'express'
 import { rateLimit } from 'express-rate-limit'
+import helmet from 'helmet'
+import path from 'path'
+import swaggerUi from 'swagger-ui-express'
+import { fileURLToPath } from 'url'
+import YAML from 'yamljs'
+
+import { env } from './config/env'
 import { errorHandler } from './core/error-handler'
-import { userRoutes } from './modules/users/presentation/user.routes'
+import { logger } from './core/logger'
 import { categoryRoutes } from './modules/categories/presentation/category.routes'
 import { productRoutes } from './modules/products/presentation/product.routes'
-import { logger } from './core/logger'
-import swaggerUi from 'swagger-ui-express'
-import YAML from 'yamljs'
-import path from 'path'
-import { fileURLToPath } from 'url'
-import { env } from './config/env'
+import { userRoutes } from './modules/users/presentation/user.routes'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)

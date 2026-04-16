@@ -1,6 +1,7 @@
 import { Product as PrismaProduct } from '@prisma/client'
+
 import { prisma } from '@/infrastructure/database/connection'
-import { Product, Benefit } from '@/modules/products/domain/product.entity'
+import { Benefit,Product } from '@/modules/products/domain/product.entity'
 import { ProductRepository } from '@/modules/products/domain/product.repository'
 
 export class PrismaProductRepository implements ProductRepository {

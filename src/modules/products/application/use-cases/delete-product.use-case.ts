@@ -1,5 +1,5 @@
-import { ProductRepository } from '@/modules/products/domain/product.repository'
 import { NotFoundError } from '@/core/exceptions'
+import { ProductRepository } from '@/modules/products/domain/product.repository'
 
 export class DeleteProductUseCase {
   constructor(private productRepository: ProductRepository) {}

@@ -1,6 +1,6 @@
-import { CategoryRepository } from '@/modules/categories/domain/category.repository'
-import { Category } from '@/modules/categories/domain/category.entity'
 import { NotFoundError } from '@/core/exceptions'
+import { Category } from '@/modules/categories/domain/category.entity'
+import { CategoryRepository } from '@/modules/categories/domain/category.repository'
 
 export class GetCategoryUseCase {
   constructor(private categoryRepository: CategoryRepository) {}

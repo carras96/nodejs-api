@@ -1,7 +1,9 @@
 import { Router } from 'express'
-import { UserController } from './user.controller'
+
 import { RegisterUserUseCase } from '@/modules/users/application/use-cases/register-user.use-case'
 import { UserRepositoryImpl } from '@/modules/users/infrastructure/user.repository.impl'
+
+import { UserController } from './user.controller'
 
 const router = Router()
 

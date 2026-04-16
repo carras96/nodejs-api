@@ -1,6 +1,6 @@
+import { CreateProductDto } from '@/modules/products/application/dtos/product.dto'
 import { Product } from '@/modules/products/domain/product.entity'
 import { ProductRepository } from '@/modules/products/domain/product.repository'
-import { CreateProductDto } from '@/modules/products/application/dtos/product.dto'
 
 export class CreateProductUseCase {
   constructor(private productRepository: ProductRepository) {}

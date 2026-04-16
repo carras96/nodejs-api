@@ -1,11 +1,13 @@
 import { Router } from 'express'
-import { ProductController } from './product.controller'
+
 import { CreateProductUseCase } from '@/modules/products/application/use-cases/create-product.use-case'
-import { ListProductsUseCase } from '@/modules/products/application/use-cases/list-products.use-case'
-import { GetProductUseCase } from '@/modules/products/application/use-cases/get-product.use-case'
-import { UpdateProductUseCase } from '@/modules/products/application/use-cases/update-product.use-case'
 import { DeleteProductUseCase } from '@/modules/products/application/use-cases/delete-product.use-case'
+import { GetProductUseCase } from '@/modules/products/application/use-cases/get-product.use-case'
+import { ListProductsUseCase } from '@/modules/products/application/use-cases/list-products.use-case'
+import { UpdateProductUseCase } from '@/modules/products/application/use-cases/update-product.use-case'
 import { PrismaProductRepository } from '@/modules/products/infrastructure/product.repository.impl'
+
+import { ProductController } from './product.controller'
 
 const router = Router()
 

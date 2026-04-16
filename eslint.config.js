@@ -1,6 +1,7 @@
-import eslint from '@eslint/js';
-import tseslint from 'typescript-eslint';
-import prettier from 'eslint-config-prettier';
+import eslint from '@eslint/js'
+import prettier from 'eslint-config-prettier'
+import simpleImportSort from 'eslint-plugin-simple-import-sort'
+import tseslint from 'typescript-eslint'
 
 export default tseslint.config(
   eslint.configs.recommended,
@@ -11,17 +12,22 @@ export default tseslint.config(
     languageOptions: {
       parserOptions: {
         project: true,
-        tsconfigRootDir: import.meta.dirname,
-      },
-    },
+        tsconfigRootDir: import.meta.dirname
+      }
+    }
   },
   {
+    plugins: {
+      'simple-import-sort': simpleImportSort
+    },
     rules: {
       '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
       'no-console': 'warn',
-    },
+      'simple-import-sort/imports': 'error',
+      'simple-import-sort/exports': 'error'
+    }
   },
   {
-    ignores: ['dist/**', 'node_modules/**', 'prisma/**'],
-  },
-);
+    ignores: ['dist/**', 'node_modules/**', 'prisma/**']
+  }
+)

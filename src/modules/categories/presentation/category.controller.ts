@@ -1,15 +1,16 @@
-import { Request, Response, NextFunction } from 'express'
-import { CreateCategoryUseCase } from '@/modules/categories/application/use-cases/create-category.use-case'
-import { ListCategoriesUseCase } from '@/modules/categories/application/use-cases/list-categories.use-case'
-import { GetCategoryUseCase } from '@/modules/categories/application/use-cases/get-category.use-case'
-import { UpdateCategoryUseCase } from '@/modules/categories/application/use-cases/update-category.use-case'
-import { DeleteCategoryUseCase } from '@/modules/categories/application/use-cases/delete-category.use-case'
-import { AddProductsToCategoryUseCase } from '@/modules/categories/application/use-cases/add-products-to-category.use-case'
-import { RemoveProductsFromCategoryUseCase } from '@/modules/categories/application/use-cases/remove-products-from-category.use-case'
+import { NextFunction,Request, Response } from 'express'
+
 import {
   createCategorySchema,
   updateCategorySchema,
 } from '@/modules/categories/application/dtos/category.dto'
+import { AddProductsToCategoryUseCase } from '@/modules/categories/application/use-cases/add-products-to-category.use-case'
+import { CreateCategoryUseCase } from '@/modules/categories/application/use-cases/create-category.use-case'
+import { DeleteCategoryUseCase } from '@/modules/categories/application/use-cases/delete-category.use-case'
+import { GetCategoryUseCase } from '@/modules/categories/application/use-cases/get-category.use-case'
+import { ListCategoriesUseCase } from '@/modules/categories/application/use-cases/list-categories.use-case'
+import { RemoveProductsFromCategoryUseCase } from '@/modules/categories/application/use-cases/remove-products-from-category.use-case'
+import { UpdateCategoryUseCase } from '@/modules/categories/application/use-cases/update-category.use-case'
 
 export class CategoryController {
   constructor(

@@ -1,5 +1,5 @@
-import { CategoryRepository } from '@/modules/categories/domain/category.repository'
 import { NotFoundError } from '@/core/exceptions'
+import { CategoryRepository } from '@/modules/categories/domain/category.repository'
 
 export class DeleteCategoryUseCase {
   constructor(private categoryRepository: CategoryRepository) {}

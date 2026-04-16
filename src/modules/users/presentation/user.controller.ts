@@ -1,6 +1,7 @@
-import { Request, Response, NextFunction } from 'express'
-import { RegisterUserUseCase } from '@/modules/users/application/use-cases/register-user.use-case'
+import { NextFunction,Request, Response } from 'express'
+
 import { registerUserSchema } from '@/modules/users/application/dtos/register-user.dto'
+import { RegisterUserUseCase } from '@/modules/users/application/use-cases/register-user.use-case'
 
 export class UserController {
   constructor(private registerUserUseCase: RegisterUserUseCase) {}

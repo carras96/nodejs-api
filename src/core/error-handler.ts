@@ -1,8 +1,9 @@
-import { Request, Response, NextFunction } from 'express'
+import { NextFunction,Request, Response } from 'express'
+import { ZodError } from 'zod'
+
+import { env } from '@/config/env'
 import { AppError } from '@/core/exceptions'
 import { logger } from '@/core/logger'
-import { env } from '@/config/env'
-import { ZodError } from 'zod'
 
 export const errorHandler = (
   err: Error,

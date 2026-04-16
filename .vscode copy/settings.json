@@ -1,0 +1,8 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "prettier.semi": false,
+  "javascript.format.semicolons": "remove",
+  "typescript.format.semicolons": "remove"
+}

@@ -1,6 +1,6 @@
+import { NotFoundError } from '@/core/exceptions'
 import { CategoryRepository } from '@/modules/categories/domain/category.repository'
 import { ProductRepository } from '@/modules/products/domain/product.repository'
-import { NotFoundError } from '@/core/exceptions'
 
 export class RemoveProductsFromCategoryUseCase {
   constructor(

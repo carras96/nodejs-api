@@ -1,7 +1,7 @@
+import { ConflictError } from '@/core/exceptions'
+import { CreateCategoryDto } from '@/modules/categories/application/dtos/category.dto'
 import { Category } from '@/modules/categories/domain/category.entity'
 import { CategoryRepository } from '@/modules/categories/domain/category.repository'
-import { CreateCategoryDto } from '@/modules/categories/application/dtos/category.dto'
-import { ConflictError } from '@/core/exceptions'
 
 export class CreateCategoryUseCase {
   constructor(private categoryRepository: CategoryRepository) {}

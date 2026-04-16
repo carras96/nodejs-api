@@ -1,14 +1,16 @@
 import { Router } from 'express'
-import { CategoryController } from './category.controller'
+
+import { AddProductsToCategoryUseCase } from '@/modules/categories/application/use-cases/add-products-to-category.use-case'
 import { CreateCategoryUseCase } from '@/modules/categories/application/use-cases/create-category.use-case'
-import { ListCategoriesUseCase } from '@/modules/categories/application/use-cases/list-categories.use-case'
-import { GetCategoryUseCase } from '@/modules/categories/application/use-cases/get-category.use-case'
-import { UpdateCategoryUseCase } from '@/modules/categories/application/use-cases/update-category.use-case'
 import { DeleteCategoryUseCase } from '@/modules/categories/application/use-cases/delete-category.use-case'
+import { GetCategoryUseCase } from '@/modules/categories/application/use-cases/get-category.use-case'
+import { ListCategoriesUseCase } from '@/modules/categories/application/use-cases/list-categories.use-case'
+import { RemoveProductsFromCategoryUseCase } from '@/modules/categories/application/use-cases/remove-products-from-category.use-case'
+import { UpdateCategoryUseCase } from '@/modules/categories/application/use-cases/update-category.use-case'
 import { PrismaCategoryRepository } from '@/modules/categories/infrastructure/category.repository.impl'
 import { PrismaProductRepository } from '@/modules/products/infrastructure/product.repository.impl'
-import { AddProductsToCategoryUseCase } from '@/modules/categories/application/use-cases/add-products-to-category.use-case'
-import { RemoveProductsFromCategoryUseCase } from '@/modules/categories/application/use-cases/remove-products-from-category.use-case'
+
+import { CategoryController } from './category.controller'
 
 const router = Router()
 

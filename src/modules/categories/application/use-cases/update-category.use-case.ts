@@ -1,7 +1,7 @@
+import { NotFoundError } from '@/core/exceptions'
+import { UpdateCategoryDto } from '@/modules/categories/application/dtos/category.dto'
 import { Category } from '@/modules/categories/domain/category.entity'
 import { CategoryRepository } from '@/modules/categories/domain/category.repository'
-import { UpdateCategoryDto } from '@/modules/categories/application/dtos/category.dto'
-import { NotFoundError } from '@/core/exceptions'
 
 export class UpdateCategoryUseCase {
   constructor(private categoryRepository: CategoryRepository) {}

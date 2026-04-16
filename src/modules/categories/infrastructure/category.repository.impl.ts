@@ -1,4 +1,5 @@
 import { Category as PrismaCategory, Prisma } from '@prisma/client'
+
 import { prisma } from '@/infrastructure/database/connection'
 import { Category } from '@/modules/categories/domain/category.entity'
 import { CategoryRepository } from '@/modules/categories/domain/category.repository'
