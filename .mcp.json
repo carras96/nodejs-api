@@ -2,10 +2,9 @@
   "mcpServers": {
     "code-review-graph": {
       "command": "code-review-graph",
-      "args": [
-        "serve"
-      ],
-      "type": "stdio"
+      "args": ["serve"],
+      "type": "stdio",
+      "auto_connect": true
     }
   }
 }
